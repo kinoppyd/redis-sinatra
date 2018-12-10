@@ -1,24 +1,24 @@
-# Redis stores for Sinatra
+# Redis stores for Mobb
 
-__`redis-sinatra`__ provides a Redis backed cache store for __Sinatra__. See the main [redis-store readme](https://github.com/redis-store/redis-store) for general guidelines.
+__`mobb-redis`__ provides a Redis backed cache store for __Mobb__. See the main [redis-store readme](https://github.com/redis-store/redis-store) for general guidelines.
 
 ## Installation
 
 ```ruby
 # Gemfile
-gem 'redis-sinatra'
+gem 'mobb-redis'
 ```
 
 ## Usage
 
 ```ruby
-require 'sinatra'
-require 'redis-sinatra'
+require 'mobb'
+require 'mobb-redis'
 
-class MyApp < Sinatra::Base
-  register Sinatra::Cache
+class MyApp < Mobb::Base
+  register Mobb::Cache
 
-  get '/hi' do
+  on 'hi' do
     settings.cache.fetch('greet') { 'Hello, World!' }
   end
 end
@@ -30,20 +30,18 @@ Keep in mind that the above fetch will return `"OK"` on success, not the return 
 
 ```ruby
 gem install bundler
-git clone git://github.com/redis-store/redis-sinatra.git
-cd redis-sinatra
+git clone https://github.com/kinoppyd/mobb-redis
+cd mobb-redis
 bundle install
 bundle exec rake
 ```
 
 If you are on **Snow Leopard** you have to run `env ARCHFLAGS="-arch x86_64" bundle exec rake`
 
-## Status
-
-[![Gem Version](https://badge.fury.io/rb/redis-sinatra.png)](http://badge.fury.io/rb/redis-sinatra) 
-[![Build Status](https://secure.travis-ci.org/redis-store/redis-sinatra.png?branch=master)](http://travis-ci.org/redis-store/redis-sinatra?branch=master) 
-[![Code Climate](https://codeclimate.com/github/redis-store/redis-sinatra.png)](https://codeclimate.com/github/redis-store/redis-sinatra)
-
 ## Copyright
 
-2009 - 2013 Luca Guidi - [http://lucaguidi.com](http://lucaguidi.com), released under the MIT license
+Original
+2009 - 2013 Luca Guidi - [http://lucaguidi.com](http://lucaguidi.com), released under the MIT license]
+
+Modify
+kinoppyd

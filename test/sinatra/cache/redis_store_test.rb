@@ -14,10 +14,10 @@ class App
   end
 end
 
-describe Sinatra::Cache::RedisStore do
+describe Mobb::Cache::RedisStore do
   before do
-    @store  = Sinatra::Cache::RedisStore.new
-    @dstore = Sinatra::Cache::RedisStore.new "redis://127.0.0.1:6380/1", "redis://127.0.0.1:6381/1"
+    @store  = Mobb::Cache::RedisStore.new
+    @dstore = Mobb::Cache::RedisStore.new "redis://127.0.0.1:6380/1", "redis://127.0.0.1:6381/1"
     @rabbit = OpenStruct.new :name => "bunny"
     @white_rabbit = OpenStruct.new :color => "white"
     with_store_management do |store|
@@ -29,9 +29,9 @@ describe Sinatra::Cache::RedisStore do
 
   it "should register as extension" do
     app = App.new
-    Sinatra::Cache.register(app)
+    Mobb::Cache.register(app)
     store = app.get(:cache)
-    store.must_be_kind_of(Sinatra::Cache::RedisStore)
+    store.must_be_kind_of(Mobb::Cache::RedisStore)
   end
 
   it "should read the data" do
@@ -156,7 +156,7 @@ describe Sinatra::Cache::RedisStore do
 
   private
     def instantiate_store(addresses = nil)
-      Sinatra::Cache::RedisStore.new(addresses).instance_variable_get(:@data)
+      Mobb::Cache::RedisStore.new(addresses).instance_variable_get(:@data)
     end
 
     def with_store_management

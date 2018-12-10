@@ -2,7 +2,7 @@ require 'bundler/setup'
 require 'rake'
 require 'bundler/gem_tasks'
 require 'redis-store/testing/tasks'
-require 'redis-sinatra/version'
+require 'mobb-redis/version'
 require 'date'
 
 desc 'Generate the changelog based on git history'
@@ -12,7 +12,7 @@ task :changelog, :from, :to do |_t, args|
   #to = args[:to] || 'HEAD'
   log = `git log 586af720daf323efeee358267752c9098c1fb407..HEAD --pretty=format:'%an|%B___'`
 
-  puts "redis-sinatra #{Redis::Sinatra::VERSION} (#{Date.today})"
+  puts "mobb-redis #{Mobb::Redis::VERSION} (#{Date.today})"
   puts '-' * 80
   puts
 

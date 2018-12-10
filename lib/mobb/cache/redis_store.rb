@@ -1,4 +1,4 @@
-module Sinatra
+module Mobb
   module Cache
     class << self
       def register(app)
@@ -29,7 +29,7 @@ module Sinatra
       #   RedisStore.new "localhost:6379/0", "localhost:6380/0"
       #     # => instantiate a cluster
       def initialize(*addresses)
-        @data = Redis::Store::Factory.create addresses
+        @data = ::Redis::Store::Factory.create addresses
       end
 
       def write(key, value, options = nil)

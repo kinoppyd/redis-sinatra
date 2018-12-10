@@ -1,4 +1,4 @@
 require 'bundler/setup'
 require 'minitest/autorun'
 require 'mocha/setup'
-require 'redis-sinatra'
+require 'mobb-redis'
